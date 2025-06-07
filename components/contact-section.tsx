@@ -84,123 +84,127 @@ export default function ContactSection() {
         <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-emerald-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-      >
-        <h2 className="section-title">Contact</h2>
+      <div className="relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="section-title">Contact</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
-            <p className="text-zinc-600 dark:text-zinc-400 mb-6">
-              Have a question or want to work together? Feel free to reach out
-              using the form or through my social links.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
+              <p className="text-zinc-600 dark:text-zinc-400 mb-6">
+                Have a question or want to work together? Feel free to reach out
+                using the form or through my social links.
+              </p>
 
-            <div className="flex flex-col gap-4 mb-8">
-              <a
-                href="mailto:hussain25177@gmail.com"
-                className="flex items-center gap-3 text-zinc-800 dark:text-zinc-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
-              >
-                <div className="bg-emerald-100 dark:bg-emerald-900/30 p-2 rounded-full">
-                  <Mail className="h-5 w-5 text-emerald-600 dark:text-emerald-500" />
-                </div>
-                <span>hussain25177@gmail.com</span>
-              </a>
-
-              <a
-                href="https://github.com/ShaikhCode"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-zinc-800 dark:text-zinc-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
-              >
-                <div className="bg-emerald-100 dark:bg-emerald-900/30 p-2 rounded-full">
-                  <Github className="h-5 w-5 text-emerald-600 dark:text-emerald-500" />
-                </div>
-                <span>github.com/hussain</span>
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/MdHussainShaikh"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-zinc-800 dark:text-zinc-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
-              >
-                <div className="bg-emerald-100 dark:bg-emerald-900/30 p-2 rounded-full">
-                  <Linkedin className="h-5 w-5 text-emerald-600 dark:text-emerald-500" />
-                </div>
-                <span>linkedin.com/in/hussain</span>
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <div className="terminal-window">
-              <div className="terminal-header">
-                <div className="terminal-dot bg-red-500"></div>
-                <div className="terminal-dot bg-yellow-500"></div>
-                <div className="terminal-dot bg-green-500"></div>
-                <span className="text-xs text-zinc-400 ml-2">contact-form</span>
-              </div>
-              <div className="terminal-body">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <p className="mb-1">$ name:</p>
-                    <Input
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="bg-zinc-800 border-zinc-700 text-emerald-500"
-                      placeholder="John Doe"
-                    />
+              <div className="flex flex-col gap-4 mb-8">
+                <a
+                  href="mailto:hussain25177@gmail.com"
+                  className="flex items-center gap-3 text-zinc-800 dark:text-zinc-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                >
+                  <div className="bg-emerald-100 dark:bg-emerald-900/30 p-2 rounded-full">
+                    <Mail className="h-5 w-5 text-emerald-600 dark:text-emerald-500" />
                   </div>
-                  <div>
-                    <p className="mb-1">$ email:</p>
-                    <Input
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="bg-zinc-800 border-zinc-700 text-emerald-500"
-                      placeholder="john@example.com"
-                    />
+                  <span>hussain25177@gmail.com</span>
+                </a>
+
+                <a
+                  href="https://github.com/ShaikhCode"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-zinc-800 dark:text-zinc-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                >
+                  <div className="bg-emerald-100 dark:bg-emerald-900/30 p-2 rounded-full">
+                    <Github className="h-5 w-5 text-emerald-600 dark:text-emerald-500" />
                   </div>
-                  <div>
-                    <p className="mb-1">$ message:</p>
-                    <Textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      className="bg-zinc-800 border-zinc-700 text-emerald-500 min-h-[120px]"
-                      placeholder="Your message here..."
-                    />
+                  <span>github.com/hussain</span>
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/MdHussainShaikh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-zinc-800 dark:text-zinc-200 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors"
+                >
+                  <div className="bg-emerald-100 dark:bg-emerald-900/30 p-2 rounded-full">
+                    <Linkedin className="h-5 w-5 text-emerald-600 dark:text-emerald-500" />
                   </div>
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white w-full"
-                  >
-                    {isSubmitting ? (
-                      <span className="flex items-center">Processing...</span>
-                    ) : (
-                      <span className="flex items-center">
-                        <Send className="h-4 w-4 mr-2" />
-                        Send Message
-                      </span>
-                    )}
-                  </Button>
-                </form>
+                  <span>linkedin.com/in/hussain</span>
+                </a>
               </div>
             </div>
+
+            <div>
+              <div className="terminal-window">
+                <div className="terminal-header">
+                  <div className="terminal-dot bg-red-500"></div>
+                  <div className="terminal-dot bg-yellow-500"></div>
+                  <div className="terminal-dot bg-green-500"></div>
+                  <span className="text-xs text-zinc-400 ml-2">
+                    contact-form
+                  </span>
+                </div>
+                <div className="terminal-body">
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <p className="mb-1">$ name:</p>
+                      <Input
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="bg-zinc-800 border-zinc-700 text-emerald-500"
+                        placeholder="John Doe"
+                      />
+                    </div>
+                    <div>
+                      <p className="mb-1">$ email:</p>
+                      <Input
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="bg-zinc-800 border-zinc-700 text-emerald-500"
+                        placeholder="john@example.com"
+                      />
+                    </div>
+                    <div>
+                      <p className="mb-1">$ message:</p>
+                      <Textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        className="bg-zinc-800 border-zinc-700 text-emerald-500 min-h-[120px]"
+                        placeholder="Your message here..."
+                      />
+                    </div>
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="bg-emerald-600 hover:bg-emerald-700 text-white w-full"
+                    >
+                      {isSubmitting ? (
+                        <span className="flex items-center">Processing...</span>
+                      ) : (
+                        <span className="flex items-center">
+                          <Send className="h-4 w-4 mr-2" />
+                          Send Message
+                        </span>
+                      )}
+                    </Button>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }

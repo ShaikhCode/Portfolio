@@ -44,46 +44,47 @@ export default function ResumeSection() {
         <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="flex flex-col items-center"
-      >
-        <h2 className="section-title">Resume</h2>
+      <div className="relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center"
+        >
+          <h2 className="section-title">Resume</h2>
 
-        <div className="w-full max-w-4xl bg-white dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden">
-          <div className="p-4 bg-emerald-600 text-white flex justify-between items-center">
-            <div className="flex items-center">
-              <FileText className="h-5 w-5 mr-2" />
-              <h3 className="font-semibold">Hussain_Shaikh_Resume.pdf</h3>
+          <div className="w-full max-w-4xl bg-white dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden">
+            <div className="p-4 bg-emerald-600 text-white flex justify-between items-center">
+              <div className="flex items-center">
+                <FileText className="h-5 w-5 mr-2" />
+                <h3 className="font-semibold">Hussain_Shaikh_Resume.pdf</h3>
+              </div>
+              <div className="flex gap-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="bg-white/20 hover:bg-white/30 text-white border-white/40"
+                  onClick={() => setShowQR(!showQR)}
+                >
+                  <QrCode className="h-4 w-4 mr-2" />
+                  QR Code
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="bg-white/20 hover:bg-white/30 text-white border-white/40"
+                  asChild
+                >
+                  <a href="/hussain_resume.pdf" download>
+                    <Download className="h-4 w-4 mr-2" />
+                    Download
+                  </a>
+                </Button>
+              </div>
             </div>
-            <div className="flex gap-2">
-              <Button
-                size="sm"
-                variant="outline"
-                className="bg-white/20 hover:bg-white/30 text-white border-white/40"
-                onClick={() => setShowQR(!showQR)}
-              >
-                <QrCode className="h-4 w-4 mr-2" />
-                QR Code
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                className="bg-white/20 hover:bg-white/30 text-white border-white/40"
-                asChild
-              >
-                <a href="/hussain_resume.pdf" download>
-                  <Download className="h-4 w-4 mr-2" />
-                  Download
-                </a>
-              </Button>
-            </div>
-          </div>
 
-          {/* <div className="relative">
+            {/* <div className="relative">
             {showQR && (
               <div className="absolute top-4 right-4 bg-white p-4 rounded-lg shadow-lg z-10">
                 <div className="w-32 h-32 bg-zinc-100 flex items-center justify-center">
@@ -117,8 +118,9 @@ export default function ResumeSection() {
               </Dialog>
             </div>
           </div> */}
-        </div>
-      </motion.div>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }

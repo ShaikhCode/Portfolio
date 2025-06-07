@@ -1,27 +1,34 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Github, ExternalLink, Code } from "lucide-react"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import { motion } from "framer-motion";
+import { Github, ExternalLink, Code } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 interface Project {
-  title: string
-  description: string
-  image: string
-  techStack: string[]
-  github?: string
-  demo?: string
+  title: string;
+  description: string;
+  image: string;
+  techStack: string[];
+  github?: string;
+  demo?: string;
 }
 
 export default function ProjectsSection() {
   const projects: Project[] = [
     {
       title: "Acedamic-Hub",
-      description: "It is a smart web-based platform that helps colleges manage student attendance, marks, feedback, and communication between admin, staff, and students in one easy-to-use system. ",
+      description:
+        "It is a smart web-based platform that helps colleges manage student attendance, marks, feedback, and communication between admin, staff, and students in one easy-to-use system. ",
       image: "/project/AH.png?height=200&width=400",
-      techStack: ["HTML", "JS", "PHP","MYSql"],
+      techStack: ["HTML", "JS", "PHP", "MYSql"],
       github: "https://github.com/ShaikhCode/ACADEMIC-HUB.git",
       demo: "https://github.com/ShaikhCode/ACADEMIC-HUB.git",
     },
@@ -36,7 +43,8 @@ export default function ProjectsSection() {
     },
     {
       title: "Learning Guidance",
-      description: "Roadmap-based learning platform that guides users through structured learning paths.",
+      description:
+        "Roadmap-based learning platform that guides users through structured learning paths.",
       image: "/project/RM.png?height=200&width=400",
       techStack: ["React", "Nodejs", "MongoDB"],
       github: "#",
@@ -44,14 +52,14 @@ export default function ProjectsSection() {
     },
     {
       title: "Portfolio Generator",
-      description: "A tool that helps developers create professional portfolios with minimal effort.",
+      description:
+        "A tool that helps developers create professional portfolios with minimal effort.",
       image: "/placeholder.svg?height=200&width=400",
       techStack: ["React", "JavaScript", "Tailwind CSS"],
       github: "#",
       demo: "#",
     },
-    
-  ]
+  ];
 
   return (
     <section className="section-container relative overflow-hidden">
@@ -81,70 +89,90 @@ export default function ProjectsSection() {
         <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-      >
-        <h2 className="section-title">Projects</h2>
+      <div className="relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="section-title">Projects</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card className="h-full flex flex-col card-hover overflow-hidden">
-                <div className="h-48 overflow-hidden">
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Code className="h-5 w-5 text-emerald-500" />
-                    {project.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p className="text-zinc-600 dark:text-zinc-400 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.techStack.map((tech) => (
-                      <Badge key={tech} variant="outline" className="bg-zinc-100 dark:bg-zinc-800">
-                        {tech}
-                      </Badge>
-                    ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="h-full flex flex-col card-hover overflow-hidden">
+                  <div className="h-48 overflow-hidden">
+                    <img
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
                   </div>
-                </CardContent>
-                <CardFooter className="flex gap-2">
-                  {project.github && (
-                    <Button variant="outline" size="sm" asChild>
-                      <a href={project.github} target="_blank" rel="noopener noreferrer">
-                        <Github className="h-4 w-4 mr-2" />
-                        Code
-                      </a>
-                    </Button>
-                  )}
-                  {project.demo && (
-                    <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700" asChild>
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        Demo
-                      </a>
-                    </Button>
-                  )}
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Code className="h-5 w-5 text-emerald-500" />
+                      {project.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow">
+                    <p className="text-zinc-600 dark:text-zinc-400 mb-4">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.map((tech) => (
+                        <Badge
+                          key={tech}
+                          variant="outline"
+                          className="bg-zinc-100 dark:bg-zinc-800"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                  <CardFooter className="flex gap-2">
+                    {project.github && (
+                      <Button variant="outline" size="sm" asChild>
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="h-4 w-4 mr-2" />
+                          Code
+                        </a>
+                      </Button>
+                    )}
+                    {project.demo && (
+                      <Button
+                        size="sm"
+                        className="bg-emerald-600 hover:bg-emerald-700"
+                        asChild
+                      >
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="h-4 w-4 mr-2" />
+                          Demo
+                        </a>
+                      </Button>
+                    )}
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </section>
-  )
+  );
 }

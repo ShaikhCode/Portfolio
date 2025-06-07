@@ -104,93 +104,97 @@ export default function CertificationsSection() {
         <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-emerald-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-      >
-        <h2 className="section-title">Certifications</h2>
+      <div className="relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="section-title">Certifications</h2>
 
-        <div className="flex flex-col items-center">
-          <div className="relative w-full max-w-2xl">
-            <Card className="overflow-hidden">
-              <div className="relative aspect-[4/3] bg-zinc-100 dark:bg-zinc-800">
-                <img
-                  src={certifications[currentIndex].image || "/placeholder.svg"}
-                  alt={certifications[currentIndex].title}
-                  className="w-full h-full object-contain"
-                />
-                <div className="absolute top-4 right-4">
-                  <div className="bg-emerald-600 text-white p-2 rounded-full">
-                    <Award className="h-5 w-5" />
+          <div className="flex flex-col items-center">
+            <div className="relative w-full max-w-2xl">
+              <Card className="overflow-hidden">
+                <div className="relative aspect-[4/3] bg-zinc-100 dark:bg-zinc-800">
+                  <img
+                    src={
+                      certifications[currentIndex].image || "/placeholder.svg"
+                    }
+                    alt={certifications[currentIndex].title}
+                    className="w-full h-full object-contain"
+                  />
+                  <div className="absolute top-4 right-4">
+                    <div className="bg-emerald-600 text-white p-2 rounded-full">
+                      <Award className="h-5 w-5" />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold">
-                  {certifications[currentIndex].title}
-                </h3>
-                <div className="flex justify-between items-center mt-2 text-zinc-600 dark:text-zinc-400">
-                  <p>{certifications[currentIndex].issuer}</p>
-                  <p>{certifications[currentIndex].date}</p>
-                </div>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-                <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={prevCertificate}
-                    className="rounded-full"
-                  >
-                    <ChevronLeft className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={nextCertificate}
-                    className="rounded-full"
-                  >
-                    <ChevronRight className="h-4 w-4" />
-                  </Button>
-                </div>
-                {certifications[currentIndex].link && (
-                  <Button
-                    size="sm"
-                    className="bg-emerald-600 hover:bg-emerald-700"
-                    asChild
-                  >
-                    <a
-                      href={certifications[currentIndex].link}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold">
+                    {certifications[currentIndex].title}
+                  </h3>
+                  <div className="flex justify-between items-center mt-2 text-zinc-600 dark:text-zinc-400">
+                    <p>{certifications[currentIndex].issuer}</p>
+                    <p>{certifications[currentIndex].date}</p>
+                  </div>
+                </CardContent>
+                <CardFooter className="flex justify-between">
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={prevCertificate}
+                      className="rounded-full"
                     >
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      View Certificate
-                    </a>
-                  </Button>
-                )}
-              </CardFooter>
-            </Card>
-          </div>
+                      <ChevronLeft className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={nextCertificate}
+                      className="rounded-full"
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+                  {certifications[currentIndex].link && (
+                    <Button
+                      size="sm"
+                      className="bg-emerald-600 hover:bg-emerald-700"
+                      asChild
+                    >
+                      <a
+                        href={certifications[currentIndex].link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        View Certificate
+                      </a>
+                    </Button>
+                  )}
+                </CardFooter>
+              </Card>
+            </div>
 
-          <div className="mt-8 flex justify-center gap-2">
-            {certifications.map((_, index) => (
-              <button
-                key={index}
-                className={`w-3 h-3 rounded-full ${
-                  index === currentIndex
-                    ? "bg-emerald-500"
-                    : "bg-zinc-300 dark:bg-zinc-700"
-                }`}
-                onClick={() => setCurrentIndex(index)}
-                aria-label={`View certificate ${index + 1}`}
-              />
-            ))}
+            <div className="mt-8 flex justify-center gap-2">
+              {certifications.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full ${
+                    index === currentIndex
+                      ? "bg-emerald-500"
+                      : "bg-zinc-300 dark:bg-zinc-700"
+                  }`}
+                  onClick={() => setCurrentIndex(index)}
+                  aria-label={`View certificate ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 }
